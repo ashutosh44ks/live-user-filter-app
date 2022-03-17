@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import { useState, useEffect } from "react";
+import UserContainer from "./components/UserContainer";
+import Loader from "./components/Loader";
 
 function App() {
+  const [users, setUsers] = useState([]);
+  const [query, setQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    fetch("https://randomuser.me/api/?results=15")
+      .then((response) => response.json())
+      .then((data) => {
+        setUsers(data.results);
+        setIsLoading(false);
+      });
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header query={query} setQuery={setQuery} />
+      {isLoading ? <Loader/> : <UserContainer users={users} query={query} />}
     </div>
   );
 }

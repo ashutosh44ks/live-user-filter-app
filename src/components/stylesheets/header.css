@@ -1,0 +1,21 @@
+.header {
+  height: 10vh;
+  padding: 1rem 5rem;
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  justify-content: space-between;
+}
+.header > svg {
+  height: 10vh;
+}
+
+.header > input {
+  border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding: 0.5rem;
+}
+.header > input:focus-visible {
+  outline: rgba(0, 0, 0, 0.15) solid 1px;
+  background-color: snow;
+}
